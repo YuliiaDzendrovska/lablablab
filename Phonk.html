@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        /* Загальний стиль для сторінки */
+        .page {
+            display: flex;
+            flex-direction: column;
+            height: auto; /* Дозволяє сторінці бути довшою за екран */
+            min-height: 100vh; /* Мінімальна висота сторінки - це висота екрана */
+            overflow-y: auto; /* Додає вертикальний скролінг, якщо сторінка довша за екран */
+        }
+
+        /* Верхня частина сторінки */
+        .top-section {
+            display: flex; /* Використовуємо flexbox для поділу на три частини */
+            height: 30%; /* Встановлюємо висоту верхньої частини на 30% */
+            border-bottom: 5px solid white; /* Біла рамка знизу, товщина 3px */
+        }
+
+        /* Кожна частина верхньої частини */
+        .top-left, .top-center, .top-right {
+            height: 100%; /* Встановлюємо висоту кожної частини на 100% від верхньої секції */
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center; /* Вирівнювання по горизонталі */
+            align-items: center; /* Вирівнювання по вертикалі */
+        }
+
+        /* Верхня ліва частина */
+        .top-left {
+            width: 10%; /* 30% ширини */
+            background-color: #800080; /* Ніжно фіолетовий */
+            border-right: 5px solid white; /* Біла смуга справа, товщина 3px */
+        }
+
+        /* Центральна частина верхньої секції */
+        .top-center {
+            width: 80%; /* 40% ширини */
+            background-color: #6A5ACD; /* Ніжно блакитний */
+            border-left: 5px solid white; /* Біла смуга зліва, товщина 3px */
+            border-right: 5px solid white; /* Біла смуга справа, товщина 3px */
+        }
+
+        /* Верхня права частина */
+        .top-right {
+            width: 10%; /* 30% ширини */
+            background-color: #800080; /* Ніжно фіолетовий */
+            border-left: 5px solid white; /* Біла смуга зліва, товщина 3px */
+        }
+
+        /* Нижні частини сторінки: ліва, центральна та права */
+        .bottom-sections {
+            display: flex;
+            height: 70%; /* Оскільки верхня частина займає 30%, залишок займає ця частина */
+            border-top: 7px solid white; /* Біла смуга між верхньою та нижньою частинами, товщина 3px */
+        }
+
+        /* Ліва частина */
+        .left-section {
+            width: 10%; /* 30% ширини */
+            background-color: #800080; /* Ніжно фіолетовий колір */
+            padding: 20px;
+
+        }
+
+        /* Центральна частина */
+        .center-section {
+            width: 80%; /* 40% ширини */
+            background-color:#6A5ACD; /* Ніжно блакитний колір */
+            padding: 20px;
+            border-right: 8px solid white; /* Біла смуга справа, товщина 3px */
+            border-left: 8px solid white; /* Біла смуга зліва, товщина 3px */
+        }
+
+        /* Права частина */
+        .right-section {
+            width: 10%; /* 30% ширини */
+            background-color: #800080; /* Ніжно фіолетовий колір */
+            padding: 20px;
+            display: flex;
+           flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        /* Стиль для списку пісень */
+        .song {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .song-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .song-title {
+            font-size: 18px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .song-image {
+            width: 100%; /* Ви можете встановити конкретні розміри */
+            max-width: 200px;
+            height: auto;
+            border-radius: 5px;
+        }
+        /* Стиль для кнопки */
+        .back-button {
+            background-color: #b84dff; /* Зелений фон */
+            color: white; /* Білий текст */
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* При наведенні на кнопку */
+        .back-button:hover {
+            background-color: #45a049; /* Темніший зелений при наведенні */
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="top-section">
+        <div class="top-left">
+          <!-- Ліва частина верхньої частини -->
+        </div>
+        <div class="top-center">
+            <!-- Центральна частина верхньої частини -->
+            <h1>Рейтинг прослуховувань протягом останніх 4-х тижнів</h1>
+        </div>
+        <div class="top-right">
+          <!-- Права частина верхньої частини -->
+           <button class="back-button" onclick="window.location.href='ЛР.html#page2'">Повернутися на головну</button>
+       </div>
+   </div>
+   <div class="bottom-sections">
+       <div class="left-section">
+            <!-- Ліва частина -->
+
+        </div>
+        <div class="center-section">
+            <div class="song">
+                <p class="song-number">1</p>
+                <h3 class="song-title">UH VEI VEI</h3>
+                <img src="https://cdns-images.dzcdn.net/images/cover/21b7e8615a8a015c5959c8bd02d2ac3e/0x1900-000000-80-0-0.jpg" alt="Пісня 1" class="song-image">
+            </div>
+            <div class="song">
+                <p class="song-number">2</p>
+                <h3 class="song-title">MEME FUNK - Slowed</h3>
+                <img src="https://source.boomplaymusic.com/group10/M00/03/16/a84a73740400440e8cbaa92db919db8d_464_464.jpg" alt="Пісня 2" class="song-image">
+            </div>
+            <div class="song">
+                <p class="song-number">3</p>
+                <h3 class="song-title">BLAH!</h3>
+                <img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/42/f7/2d/42f72d5d-b36e-f261-833f-31ada508b3b4/4059473473435.jpg/1200x1200bb.jpg" alt="Пісня 3" class="song-image">
+            </div>
+            <div class="song">
+                <p class="song-number">4</p>
+                <h3 class="song-title">ALORS BRAZIL</h3>
+                <img src="https://i.scdn.co/image/ab67616d0000b273f463ab32d3175cfe480dbd8d" alt="Пісня 4" class="song-image">
+            </div>
+            <div class="song">
+                <p class="song-number">5</p>
+                <h3 class="song-title">KRUSHKRUSH!</h3>
+                <img src="https://i.scdn.co/image/ab67616d0000b2738e66df2c6cbbbe05f4a42f7e" alt="Пісня 5" class="song-image">
+            </div>
+            <div class="song">
+                <p class="song-number">6</p>
+                <h3 class="song-title">Vois sur ton chemin - DJ Holanda MONTAGEM CORAL Remix</h3>
+                <img src="https://i1.sndcdn.com/artworks-q7va8jKQmojC-0-t500x500.jpg" alt="Пісня 6" class="song-image">
+            </div>
+            <div class="song">
+                <p class="song-number">7</p>
+                <h3 class="song-title">Vai Me Bota</h3>
+                <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/94/00/e0/9400e0d1-c592-73d2-28c3-919ffd01057b/cover.jpg/1200x1200bb.jpg" alt="Пісня 7" class="song-image">
+            </div>
+            <div class="song">
+                <p class="song-number">8</p>
+                <h3 class="song-title">Automotivo Insuficiencia</h3>
+                <img src="https://i.scdn.co/image/ab67616d0000b273ef72037ec9dca7581d026323" alt="Пісня 8" class="song-image">
+            </div>
+            <div class="song">
+                <p class="song-number">9</p>
+                <h3 class="song-title">FUNK DO BOUNCE (Slowed)</h3>
+                <img src="https://i.scdn.co/image/ab67616d0000b2734c4e90204c765f7e25c7d743" alt="Пісня 9" class="song-image">
+            </div>
+            <div class="song">
+                <p class="song-number">10</p>
+                <h3 class="song-title">VAPO DO VAPO</h3>
+                <img src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/24/02/8a/24028af3-93f8-18b4-5d4b-eef7d96e936b/1963622425691_cover.png/600x600bf-60.jpg" alt="Пісня 10" class="song-image">
+            </div>
+        </div>
+        <div class="right-section">
+            <!-- Права частина -->
+            <button class="back-button" onclick="window.location.href='ЛР.html#page2'">Повернутися на головну</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

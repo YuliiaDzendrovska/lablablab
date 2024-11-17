@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      body, html {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+      }
+      .page {
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          position: relative;
+          font-family: Arial, sans-serif;
+      }
+
+      /* Перша сторінка */
+      #page1 {
+          background-image: url(https://i.pinimg.com/736x/2b/8b/67/2b8b67e641ba13860110a4898c8fd0a6.jpg);
+          background-size: cover;
+          background-position: center;
+          color: white;
+          text-align: center;
+          font-family: Arial, sans-serif;
+      }
+      .bg-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(128, 128, 128, 0.5);
+          z-index: 0;
+          font-family: Arial, sans-serif;
+      }
+      .content {
+          position: relative;
+          z-index: 1;
+      }
+      .btn-custom {
+          background-color: #7B68EE;
+          border: none;
+          color: black;
+          padding: 7px 100px;
+          font-size: 2rem;
+          border-radius: 3px;
+          font-family: Arial, sans-serif;
+      }
+
+      /* Друга сторінка */
+      #page2 {
+          background-color: #f8f9fa;
+      }
+      .main-text {
+          font-size: 3rem;
+          margin-bottom: 70px;
+          text-align: center;
+          font-family: Arial, sans-serif;
+      }
+      .blocks-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 20px;
+          width: 100%;
+          max-width: 1100px;
+          font-family: Arial, sans-serif;
+      }
+      .block {
+          background-color: white;
+          height: 300px;
+          border: 1px solid #dee2e6;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+         text-align: justify;
+         padding: 20px;
+         font-family: Arial, sans-serif;
+      }
+      .block-button {
+          width: 100%;
+          padding: 15px;
+          font-weight: bold;
+          font-size: 2rem;
+          background-color: #7B68EE;
+          border: none;
+          color: black;
+          text-align: center;
+          cursor: pointer;
+          border-radius: 3px;
+          font-family: Arial, sans-serif;
+      }
+      .block-button:hover {
+          background-color: #e0a800;
+      }
+      .hello{font-size: 2rem; font-weight: bold;text-align: center;font-family: Arial, sans-serif;}
+
+      /* Третя сторінка */
+      #page3 {
+          background-color: #f8f9fa;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          font-family: Arial, sans-serif;
+      }
+      .narrow-image {
+          background-image: url(https://i.pinimg.com/564x/43/d1/ff/43d1ff2078f673e4b1f4c3117341223e.jpg);
+          background-size: cover;
+          background-position: center;
+          width: 100%;
+          height: 500px;
+          position: relative;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+      }
+      .top-text {
+          position: absolute;
+          top: 70px;
+          font-size: 2.5rem;
+          color: white;
+          font-family: Arial, sans-serif;
+      }
+      .center-text {
+          font-size: 2rem;
+          color: white;
+          text-align: center;
+          font-family: Arial, sans-serif;
+      }
+      .image-button {
+          margin-top: 20px;
+          background-color: #7B68EE;
+          border: none;
+          padding: 10px 25px;
+          font-size: 1.2rem;
+          color: black;
+          cursor: pointer;
+          border-radius: 5px;
+          font-family: Arial, sans-serif;
+      }
+      .image-button:hover {
+          background-color: #e0a800;
+      }
+
+      /* Четверта сторінка */
+      #page4 {
+          background-color: white;
+      }
+
+      /* Четверта сторінка */
+      .large-button-container {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr); /* Два стовпці */
+          gap: 20px;
+          padding: 0 20px;
+          font-family: Arial, sans-serif;
+      }
+
+      .large-heading {
+          background-color: #f8f9fa;
+          border: none;
+          color: #7B68EE;
+          cursor: pointer;
+          border-radius: 3px;
+          font-size:60px;
+          font-weight:bold;
+          text-align:center;
+          display: flex;
+          flex-basis: 50%;
+          justify-content: center;
+          align-items: center;
+          aspect-ratio: 1.2 / 1;
+          width: 400px; /* Щоб кнопка займала всю доступну ширину в колонці */
+          font-family: Arial, sans-serif;
+      }
+
+      .small-heading{font-size:20px;  flex-basis: 50%;}
+      .large-heading:hover {
+          background-color: #E6E6FA;
+      }
+
+      @media (max-width: 768px) {
+          .btn-custom {
+              padding: 7px 50px;
+              font-size: 1rem;
+          }
+          .narrow-image {
+              height: 300px;
+          }
+          .main-text {
+              font-size: 2rem;
+          }
+          .block {
+              height: auto;
+          }
+      }
+
+      /* Жовта вставка після кнопок */
+.yellow-section {
+    background-color: #7B68EE;
+    width: 100%; /* Вся ширина сторінки */
+    height: 30vh; /* 30% висоти вікна браузера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+.yellow-text {
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+/* Стиль для сторінки1 з блоком */
+#page5{  background-color: white; height: 60%;}
+.container {
+           display: flex; /* Вирівнювання по горизонталі */
+           height: 100%; /* Висота контейнера */
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+
+       }
+       .left-half {
+           width: 50%; /* Ліва частина займає 50% ширини */
+           padding: 20px; /* Відступи для тексту */
+           display: flex;
+           flex-direction: column; /* Вертикальне вирівнювання */
+           justify-content: center; /* Центрування по вертикалі */
+           font-family: Arial, sans-serif;
+       }
+       .right-half {
+           width: 50%; /* Права частина займає 50% ширини */
+           display: flex;
+           justify-content: center; /* Центрування зображення по горизонталі */
+           align-items: center; /* Центрування зображення по вертикалі */
+font-family: Arial, sans-serif;
+       }
+       .small-button {
+           background-color: #7B68EE;
+           border: none;
+           padding: 3px 8px;
+           font-size: 1rem;
+           color: black;
+           cursor: pointer;
+           border-radius: 5px;
+           margin-top: 10px; /* Відступ між текстом і кнопкою */
+          width: 100px;
+           float: left;
+font-family: Arial, sans-serif;
+       }
+       .small-button:hover {
+           background-color: #7B68EE;
+       }
+       .image {
+           max-width: 100%; /* Ширина зображення не більше 100% */
+           height: auto; /* Автоматичне масштабування по висоті */
+          aspect-ratio: 1.5 / 1;
+          object-fit: cover;
+       }
+
+/* Стиль для сторінки2 з блоком */
+#page6{  background-color: white;height: 60%;}
+       .container {
+              display: flex; /* Вирівнювання по горизонталі */
+              height: 100%; /* Висота контейнера */
+                overflow: hidden;
+                font-family: Arial, sans-serif;
+          }
+          .left-half {
+              width: 50%; /* Ліва частина займає 50% ширини */
+              display: flex;
+              justify-content: center; /* Центрування зображення по горизонталі */
+              align-items: center; /* Центрування зображення по вертикалі */
+              font-family: Arial, sans-serif;
+          }
+          .right-half {
+              width: 50%; /* Права частина займає 50% ширини */
+              padding: 20px; /* Відступи для тексту */
+              display: flex;
+              flex-direction: column; /* Вертикальне вирівнювання */
+              justify-content: center; /* Центрування по вертикалі */
+              font-family: Arial, sans-serif;
+          }
+          .small-button {
+              background-color: #ffc107;
+              border: none;
+              padding: 3px 8px; /* Зменшені відступи для кнопки */
+              font-size: 1rem; /* Зменшений шрифт для кнопки */
+              color: black;
+              cursor: pointer;
+              border-radius: 5px;
+              margin-top: 10px; /* Відступ між текстом і кнопкою */
+              width: 100px; /* Ширина кнопки */
+              font-family: Arial, sans-serif;
+          }
+          .small-button:hover {
+              background-color: #7B68EE;
+          }
+          .image {
+              max-width: 100%; /* Ширина зображення не більше 100% */
+              height: auto; /* Автоматичне масштабування по висоті */
+              aspect-ratio: 1.5 / 1;
+                object-fit: cover;
+          }
+
+/* Стиль для сторінки3 з блоком */
+#page7{  background-color: white;height: 60%;}
+          .container {
+                     display: flex; /* Вирівнювання по горизонталі */
+                     height: 100%; /* Висота контейнера */
+                     font-family: Arial, sans-serif;
+                 }
+                 .left-half {
+                     width: 50%; /* Ліва частина займає 50% ширини */
+                     padding: 20px; /* Відступи для тексту */
+                     display: flex;
+                     flex-direction: column; /* Вертикальне вирівнювання */
+                     justify-content: center; /* Центрування по вертикалі */
+                     font-family: Arial, sans-serif;
+                 }
+                 .right-half {
+                     width: 50%; /* Права частина займає 50% ширини */
+                     display: flex;
+                     justify-content: center; /* Центрування зображення по горизонталі */
+                     align-items: center; /* Центрування зображення по вертикалі */
+                     font-family: Arial, sans-serif;
+                 }
+                 .small-button {
+                     background-color: #7B68EE;
+                     border: none;
+                     padding: 3px 8px;
+                     font-size: 1rem;
+                     color: black;
+                     cursor: pointer;
+                     border-radius: 5px;
+                     margin-top: 10px; /* Відступ між текстом і кнопкою */
+                    width: 100px;
+                    font-family: Arial, sans-serif;
+                 }
+                 .small-button:hover {
+                     background-color: #e0a800;
+                 }
+                 .image {
+                     max-width: 100%; /* Ширина зображення не більше 100% */
+                     height: auto; /* Автоматичне масштабування по висоті */
+                 }
+  /* блок з фоткою і текстом */
+  .big-image {
+      background-image: url(https://img.freepik.com/premium-photo/solid-dark-blue-background_941526-8289.jpg);
+      width: 100%; /* Вся ширина сторінки */
+      height: 30%; /* 30% висоти вікна браузера */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+      padding: 0 70px;
+  }
+  .left11-text {
+      font-size: 2rem;
+      color: white;
+      width: 70%;
+      text-align: left;
+      font-family: Arial, sans-serif;
+  }
+  .photo-button {
+      margin-top: 20px;
+      background-color: #7B68EE;
+      border: none;
+      padding: 10px 25px;
+      font-size: 1.2rem;
+      color: black;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 30%;
+  }
+  .photo-button:hover {
+      background-color: #6A5ACD;
+  }
+
+/*останній блок*/
+.white-insert {
+    background-color: white; /* Білий фон */
+    width: 100%; /* 100% ширини сторінки */
+    height: 30%; /* 30% висоти */
+    display: flex; /* Використання flexbox для розташування блоків в ряд */
+    justify-content: space-around; /* Рівномірний розподіл блоків */
+    align-items: center; /* Вирівнювання по вертикалі */
+    padding: 10px 0; /* Внутрішні відступи */
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+
+}
+.text-block {
+    padding: 15px; /* Внутрішні відступи */
+    width: 20%; /* Ширина кожного блоку */
+    text-align: center; /* Вирівнювання тексту по центру */
+    font-family: Arial, sans-serif;
+}
+.last-insert {
+    background-color: #6200ea; /* Білий фон */
+    width: 100%; /* 100% ширини сторінки */
+    height: 30%; /* 30% висоти */
+    display: flex; /* Використання flexbox для розташування блоків в ряд */
+    justify-content: space-around; /* Рівномірний розподіл блоків */
+    align-items: center; /* Вирівнювання по вертикалі */
+    padding: 10px 0; /* Внутрішні відступи */
+    font-size: 40px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+
+}
+
+.textarea{font-size:70px;font-weight: bold; color:#7B68EE; }
+
+
+    </style>
+  </head>
+
+  <body>
+    <!-- Перша сторінка -->
+    <div id="page1" class="page">
+
+        <div class="content">
+            <h1 class="font-weight-bold">Я меломанка</h1>
+            <p class="lead">і розкажу, яку музику люблю</p>
+            <a href="#page2" class="btn btn-custom mr-2">Погнали</a>
+            <a href="#page2" class="btn btn-custom ml-2">Погнали</a>
+        </div>
+    </div>
+
+    <!-- Друга сторінка -->
+    <div id="page2" class="page">
+    <div class="main-text">Мої топ жанри протягом останнього місяця</div>
+    <div class="blocks-container">
+        <div>
+            <div class="block">
+              <p class="hello">1</p>
+            Один з найулюбеніших жанрів. Є мільйон варінтів підібрати собі пісню під настрій: сумна, весела, агресивна, меланхолійна, ностальгічна. Об'єктивно, це найкраще, що може бути.
+            </div>
+            <a href="Phonk.html">
+                <button class="block-button">Phonk</button>
+            </a>
+        </div>
+        <div>
+            <div class="block">
+              <p class="hello">2</p>
+            Надзвичайно люблю україні пісні. Сюди входить досить багато жанрів, але серед основних - це поп, рок та народні пісні. Дуже чіпляють мене своїм звучанням.
+            </div>
+            <a href="Ukrainian folk rock.html">
+                <button class="block-button">Ukrainian folk rock</button>
+            </a>
+        </div>
+        <div>
+            <div class="block">
+              <p class="hello">3</p>
+              Я не можу виділити чітко ще один жанр, адже це занадто складно. Я слухаю буквально все: від максимально душевних пісень, класики, пісень 90-х до надзвичайно потужного агресивного фонку, від якого так класно штирить;))
+            </div>
+            <a href="Something else.html">
+                <button class="block-button">Something else</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Третя сторінка -->
+    <div id="page3" class="page">
+        <div class="narrow-image">
+            <div class="top-text">Пропоную глянути на цифри</div>
+            <div class="center-text">Це моя статистика прослуховування музики протягом 2023 року</div>
+            <button class="image-button" onclick="window.location.href='#page4'">тиць</button>
+        </div>
+    </div>
+
+    <!-- Четверта сторінка -->
+  <div id="page4" class="page">
+      <div class="large-button-container">
+          <button class="large-heading" onclick="window.location.href='#page3'"><h>>15000 хв</h></button>
+          <button class="large-heading" onclick="window.location.href='#page3'">316 хв</button>
+          <button class="large-heading" onclick="window.location.href='#page3'">598 виконавців</button>
+          <button class="large-heading" onclick="window.location.href='#page3'">>11 днів поспіль</button>
+      </div>
+  </div>
+
+
+
+
+
+
+    <!-- Жовта вставка -->
+    <div class="yellow-section">
+        <p class="yellow-text">Топ виконавців протягом останнього місяця</p>
+    </div>
+
+    <!--Сторінка1 з одним блоком -->
+      <div id="page5" class="page">
+    <div class="container">
+         <div class="left-half">
+             <h2>Христина Соловій</h2>
+         </div>
+         <div class="right-half">
+             <img src="https://focus.ua/static/storage/thumbs/920x465/d/4a/833d6680-2a9b3d7afd450ff6d9e99249bd1824ad.jpg?v=5010_1" alt="Зображення" class="image">
+         </div>
+     </div>
+   </div>
+
+     <!--Сторінка2 з одним блоком -->
+       <div id="page6" class="page">
+     <div class="container">
+           <div class="left-half">
+               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlswT4m9qnKEyMZA7xHo7s_5-J-Nj6oW89sQ&s" alt="Зображення" class="image">
+           </div>
+           <div class="right-half">
+               <h2>MoonDeity</h2>
+           </div>
+       </div>
+     </div>
+
+       <!--Сторінка3 з одним блоком -->
+         <div id="page5" class="page">
+       <div class="container">
+            <div class="left-half">
+                <h2>Kordhell</h2>
+            </div>
+            <div class="right-half">
+                <img src="https://www.billboard.com/wp-content/uploads/2022/11/phonk-kordhell-billboard-2022-bb15-1548.jpg?w=1024" alt="Зображення" class="image">
+            </div>
+        </div>
+          </div>
+
+  <!-- блок з фоткою і текстом -->
+  <div id="page7" class="big-image">
+          <div class="left11-text">Зараз я пропоную перейти до цікавих інтерактивностей:)</div>
+
+      </div>
+  </div>
+
+  <!--останній блок-->
+
+<div class="white-insert">
+    <div class="text-block"><r><a href="s1.html">Пісня за настроєм</a></r></div>
+    <div class="text-block"><r><a href="s2.html">Пісні за жанрами</a></ri></div>
+    <div class="text-block"><r><a href="s3.html">Діграма жанрів</a></r></div>
+    <div class="text-block"><r><a href="s4.html">Музичний квіз</a></r></div>
+</div>
+
+
+<div class="last-insert">
+  <div class="text-block">З вами була пані Юлія</div>
+  <div class="text-block">tg:miikakoraaa</div>
+</div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
